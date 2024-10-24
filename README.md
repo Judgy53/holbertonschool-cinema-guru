@@ -40,6 +40,7 @@ Covered Topics:
 - [0. Cloning the Figma project](#0-cloning-the-figma-project)
 - [1. Setting up the workspace](#1-setting-up-the-workspace)
 - [2. Adding the general use components](#2-adding-the-general-use-components)
+- [3. Initialize the main App component](#3-initialize-the-main-app-component)
 
 ## 0. Cloning the Figma project
 Create an account in [Figma](https://www.figma.com/ "Figma") if you don’t have one and open [this project](https://www.figma.com/design/RPc247kHDXz5QeFNUM3Gs6/Holbertonschool---Cinema-Guru?node-id=0-1&node-type=canvas "this project") and “Duplicate to your Drafts” to have access to all design details.
@@ -164,5 +165,26 @@ Create `src/components/general/SearchBar.js`:
 Create `src/components/general/general.css`:
 
 - Add the necessary css rules to assure the components design provided in Figma.
+
+<sub>[Return to Top](#holbertonschool-cinema-guru)</sub>
+
+## 3. Initialize the main App component
+Now we will add the main App comonent that will host all of the others.
+
+**App**
+
+Edit `src/App.js`:
+- The file should import `App.css`
+- The file should export a functional component named `App` as default:
+    - Add the following state to the component using the `useState` hook:
+        - `isLoggedIn`Boolean default: `false`
+        - `userUsername`string default: `""`
+    - use the `useEffect` hook to do the following whenever the component mounts:
+        - Get the value of `accessToken` item from the `localStorage`
+        - Send a post request to `/api/auth/` with the `authorization` header set to `Bearer <accessToken>`
+            - `onSuccess` set the isLoggedin and the userUsername state to true and the username from the response object respectively
+    - App must return depending on the isLoggedIn state :
+        - `true`: The Dashboard component (Will be built in later tasks)
+        - `false`: The Authentication component (Will be built in later tasks)
 
 <sub>[Return to Top](#holbertonschool-cinema-guru)</sub>
