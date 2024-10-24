@@ -25,7 +25,7 @@ function GeneralDemo() {
         value={username}
         setValue={setUsername}
         className="demo-input-with-icon"
-        icon={<FontAwesomeIcon icon={faUser} />}
+        icon={faUser}
       />
       <Input
         label="email"
@@ -46,7 +46,7 @@ function GeneralDemo() {
         className="demo-button-login"
         label="Login"
         onClick={onButtonClick}
-        icon={<FontAwesomeIcon icon={faRightToBracket} />}
+        icon={faRightToBracket}
       />
       <br />
       <SearchBar

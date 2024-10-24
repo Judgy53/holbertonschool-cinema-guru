@@ -10,11 +10,10 @@ import "./general.css";
  */
 function SearchBar({ title, setTitle, inputAttributes }) {
   const handleInput = (e) => setTitle(e.target.value);
-  const icon = <FontAwesomeIcon icon={faMagnifyingGlass} />;
 
   return (
     <label className="SearchBar">
-      {icon}
+      <FontAwesomeIcon icon={faMagnifyingGlass} />;
       <input
         type="search"
         value={title}

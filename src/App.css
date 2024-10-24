@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Roboto";
+  src:
+    local("Roboto"),
+    url("assets/Roboto-Regular.ttf") format("TrueType")
+}
+
+.App {
+  min-height: 100vh;
+  background-color: #222222;
+  display: flow-root;
+  font-family: 'Roboto';
+}

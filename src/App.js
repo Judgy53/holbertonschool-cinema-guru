@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "./App.css";
+import Authentication from "./routes/auth/Authentication";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,7 +30,7 @@ function App() {
       {isLoggedIn ? (
         <div className="Dashboard">{userUsername}</div>
       ) : (
-        <div className="Authentication"></div>
+        <Authentication />
       )}
     </div>
   );

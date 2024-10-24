@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./general.css";
 
 /**
@@ -22,9 +23,9 @@ function Input({
   const handleInput = (e) => setValue(e.target.value);
 
   return (
-    <label className={`Input ${className}`}>
+    <label className={`Input ${className ?? ""}`}>
       <span>
-        {icon}
+        {icon && <FontAwesomeIcon icon={icon} />}
         {label}:
       </span>
       <input

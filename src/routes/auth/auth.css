@@ -1,0 +1,51 @@
+.Authentication {
+  display: flex;
+  height: 100vh;
+  place-content: center;
+  align-items: center;
+}
+
+.auth-window {
+  background: white;
+  width: min(450px, 75%);
+
+  .auth-switch {
+    width: 50%;
+    padding-block: 1rem;
+
+    &.active {
+      background-color: #e31c25;
+    }
+  }
+
+  .Login,
+  .Register {
+    padding-block: 1.5rem;
+    padding-inline: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    h3 {
+      text-align: center;
+      text-wrap: balance;
+      margin-top: 0;
+    }
+  }
+
+  .auth-field {
+    display: block;
+
+    svg {
+      color: #e31c25;
+    }
+
+    input {
+      width: 100%
+    }
+  }
+
+  .auth-submit {
+    place-self: end;
+  }
+}

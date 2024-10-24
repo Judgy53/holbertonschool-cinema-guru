@@ -1,13 +1,7 @@
-:root {
-  --general-clr-red: #bb000e;
-  --general-clr-red-light: #e31c25;
-  --general-clr-input-bg-dark: #2c2c2c;
-}
-
 .Input,
 .SelectInput {
   svg {
-    padding-right: 5px;
+    padding-right: 10px;
     opacity: 0.4;
   }
 
@@ -15,7 +9,7 @@
   select {
     display: block;
     border: none;
-    border-bottom: 1px solid var(--general-clr-red);
+    border-bottom: 1px solid #bb000e;
     background: none;
 
     &:focus {
@@ -32,25 +26,26 @@
 }
 
 .Button {
+  --btn-bg: #bb000e;
   color: white;
-  background-color: var(--general-clr-red);
+  background-color: var(--btn-bg);
   border: none;
   border-radius: 0;
   cursor: pointer;
   transition: background-color 0.25s linear;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 0.75rem;
 
   svg {
-    padding-right: 5px;
+    padding-right: 10px;
   }
 
   &:hover {
-    background-color: var(--general-clr-red-light);
+    --btn-bg: #e31c25;
   }
 }
 
 .SearchBar {
-  background-color: var(--general-clr-input-bg-dark);
+  background-color: #2c2c2c;
   border-radius: 15px;
   padding: .2rem .5rem;
   width: fit-content;

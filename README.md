@@ -41,6 +41,7 @@ Covered Topics:
 - [1. Setting up the workspace](#1-setting-up-the-workspace)
 - [2. Adding the general use components](#2-adding-the-general-use-components)
 - [3. Initialize the main App component](#3-initialize-the-main-app-component)
+- [4. Authentification - Component behavior](#4-authentification---component-behavior)
 
 ## 0. Cloning the Figma project
 Create an account in [Figma](https://www.figma.com/ "Figma") if you don’t have one and open [this project](https://www.figma.com/design/RPc247kHDXz5QeFNUM3Gs6/Holbertonschool---Cinema-Guru?node-id=0-1&node-type=canvas "this project") and “Duplicate to your Drafts” to have access to all design details.
@@ -186,5 +187,78 @@ Edit `src/App.js`:
     - App must return depending on the isLoggedIn state :
         - `true`: The Dashboard component (Will be built in later tasks)
         - `false`: The Authentication component (Will be built in later tasks)
+
+<sub>[Return to Top](#holbertonschool-cinema-guru)</sub>
+
+## 4. Authentification - Component behavior
+In this task we will add the three main authentication components `Authentication Login Register`
+
+**auth.css**
+
+Create `src/routes/auth/auth.css`:
+
+This file would host all the css needed for the authentication components.
+
+**Authentication**
+
+![](readme_assets/4_authTabs.gif)
+
+The `Authentication` component will be the parent of the two other mentioned component. It will allow us to switch between logging in or registering when clicking the header buttons.
+
+Create `src/routes/auth/Authentication.js`:
+- The file should import `auth.css`
+- The file should export a functional component named `Authentication` as default:
+    - Authentication must accept these props:
+        - `setIsLoggedIn`: function – The setState for the isLoggedin state
+        - `setUserUsername`: function –The setState for the userUsername state
+    - Add the following state to the component using the `useState` hook:
+        - `_switch`Boolean default: `true`
+        - `username`string default: `""`
+        - `password`string default: `""`
+    - Authentication must return a html `form` in which there’s two `Buttons`:
+        - Sign In: When clicked sets the `_switch` state to `true`
+        - Sign Up: When clicked sets the `_switch` state to `false`
+
+**Login**
+
+![](readme_assets/4_login.png)
+
+The `Login` will host the components needed to login.
+
+Create `src/routes/auth/Login.js`:
+- The file should import `auth.css`
+- The file should export a functional component named `Login` as default:
+    - Login must accept these props:
+        - `username`: string – The username controlled state
+        - `password`: string – The password controlled state
+        - `setUsername`: function – The setState for the username state
+        - `setPassword`: function –The setState for the password state
+    - Login must return:
+        - Two Inputs for the username and password
+        - A Button for submit
+
+**Register**
+
+![](readme_assets/4_register.png)
+
+The `Register` will host the components needed to register.
+
+Create `src/routes/auth/Register.js`:
+- The file should import `auth.css`
+- The file should export a functional component named `Register` as default:
+    - Authentication must accept these props:
+        - `username`: string – The username controlled state
+        - `password`: string – The password controlled state
+        - `setUsername`: function – The setState for the username state
+        - `setPassword`: function –The setState for the password state
+    - Register must return:
+        - Two Inputs for the username and password
+        - A Button for submit
+
+In `src/routes/auth/Authentication.js`:
+- import `Login` and `Register`
+- Add the necessary code to render the `Login` component whenever `_switch` is `true` otherwise render `Register`
+
+![](readme_assets/4_usage.gif)
 
 <sub>[Return to Top](#holbertonschool-cinema-guru)</sub>
