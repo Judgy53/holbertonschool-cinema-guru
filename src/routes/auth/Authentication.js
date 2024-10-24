@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import Button from "../../components/general/Button";
 import "./auth.css";
@@ -13,13 +14,29 @@ function Authentication({ setIsLoggedIn, setUserUsername }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const url = `/api/auth/${_switch ? "login" : "register"}`;
+    axios
+      .post(url, { username, password })
+      .then((response) => {
+        localStorage.setItem("accessToken", response.data.accessToken);
+        setUserUsername(username);
+        setIsLoggedIn(true);
+      })
+      .catch((error) => {
+        console.error("Error while submitting form\n", error);
+      });
+  };
+
   useEffect(() => {
     setUsername("");
     setPassword("");
   }, [_switch]);
 
   return (
-    <form className="Authentication">
+    <form className="Authentication" onSubmit={handleSubmit}>
       <div className="auth-window">
         <div className="auth-tabs">
           <Button

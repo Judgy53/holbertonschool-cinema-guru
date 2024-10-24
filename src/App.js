@@ -13,10 +13,11 @@ function App() {
 
     axios
       .post("/api/auth", undefined, {
-        authorization: `Bearer ${accessToken}`,
+        headers: {
+          authorization: `Bearer ${accessToken}`,
+        },
       })
       .then((response) => {
-        console.log(response, response?.data);
         setIsLoggedIn(true);
         setUserUsername(response.data.username);
       })
@@ -28,9 +29,12 @@ function App() {
   return (
     <div className="App">
       {isLoggedIn ? (
-        <div className="Dashboard">{userUsername}</div>
+        <div className="Dashboard">Welcome {userUsername}</div>
       ) : (
-        <Authentication />
+        <Authentication
+          setIsLoggedIn={setIsLoggedIn}
+          setUserUsername={setUserUsername}
+        />
       )}
     </div>
   );

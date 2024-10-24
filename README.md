@@ -42,6 +42,7 @@ Covered Topics:
 - [2. Adding the general use components](#2-adding-the-general-use-components)
 - [3. Initialize the main App component](#3-initialize-the-main-app-component)
 - [4. Authentification - Component behavior](#4-authentification---component-behavior)
+- [5. Authentification - Api integration](#5-authentification---api-integration)
 
 ## 0. Cloning the Figma project
 Create an account in [Figma](https://www.figma.com/ "Figma") if you don’t have one and open [this project](https://www.figma.com/design/RPc247kHDXz5QeFNUM3Gs6/Holbertonschool---Cinema-Guru?node-id=0-1&node-type=canvas "this project") and “Duplicate to your Drafts” to have access to all design details.
@@ -260,5 +261,23 @@ In `src/routes/auth/Authentication.js`:
 - Add the necessary code to render the `Login` component whenever `_switch` is `true` otherwise render `Register`
 
 ![](readme_assets/4_usage.gif)
+
+<sub>[Return to Top](#holbertonschool-cinema-guru)</sub>
+
+## 5. Authentification - Api integration
+In this task, will add the necessary logic to finalize the authentication process.
+
+- in `src/routes/auth/Authentication.js`:
+    - Create `handleSubmit` function:
+        - handleSubmit takes the `onSubmit` event as parameter.
+        - use the `preventDefault` event method to disable the default behavior of the form
+        - Depending on the _switch state:
+            - `true`: using `axios` send a post request to `/api/auth/login` route with `username` and `password` from the component state as body data.
+            - `false`: using `axios` send a post request to `/api/auth/register` route with `username` and `password` from the component state as body data.
+            - `onSuccess` we will get a response containing a jwt access token.
+                - Store the token in the `localStorage`
+                - Set the userUsername state to username
+                - Set the isLoggedIn state to true
+    - Bind the `handleSubmit` function to the form `onSubmit` event
 
 <sub>[Return to Top](#holbertonschool-cinema-guru)</sub>
