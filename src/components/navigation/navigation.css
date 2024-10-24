@@ -1,0 +1,30 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  place-items: center;
+  height: 62px;
+  padding-inline: 1rem;
+  background-color: #161616;
+  color: white;
+
+  .user {
+    display: flex;
+    place-items: center;
+    gap: 1rem;
+
+    .profile-pic {
+      height: 41px;
+      border: 3px solid #BB000E;
+      border-radius: 50%;
+    }
+
+    .logout {
+      color: #BB000E;
+      cursor: pointer;
+
+      svg {
+        margin-right: .25rem;
+      }
+    }
+  }
+}

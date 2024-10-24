@@ -4,10 +4,11 @@ import Input from "../../components/general/Input";
 import "./auth.css";
 
 /**
- * @param {string} username - the username controlled state
- * @param {string} password - the password controlled state
- * @param {Function} setUsername - The setState for the username state
- * @param {Function} setPassword - The setState for the password state
+ * @param {Object} props - the component properties
+ * @param {string} props.username - the username controlled state
+ * @param {string} props.password - the password controlled state
+ * @param {Function} props.setUsername - The setState for the username state
+ * @param {Function} props.setPassword - The setState for the password state
  */
 function Login({ username, password, setUsername, setPassword }) {
   return (

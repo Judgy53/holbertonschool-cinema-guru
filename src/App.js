@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Authentication from "./routes/auth/Authentication";
+import Dashboard from "./routes/dashboard/Dashboard";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,7 +30,7 @@ function App() {
   return (
     <div className="App">
       {isLoggedIn ? (
-        <div className="Dashboard">Welcome {userUsername}</div>
+        <Dashboard setIsLoggedIn={setIsLoggedIn} userUsername={userUsername} />
       ) : (
         <Authentication
           setIsLoggedIn={setIsLoggedIn}

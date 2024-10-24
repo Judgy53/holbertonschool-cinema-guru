@@ -6,8 +6,9 @@ import Login from "./Login";
 import Register from "./Register";
 
 /**
- * @param {Function} setIsLoggedIn - The setState for the isLoggedin state
- * @param {Function} setUserUsername - The setState for the userUsername state
+ * @param {Object} props - the component properties
+ * @param {Function} props.setIsLoggedIn - The setState for the isLoggedin state
+ * @param {Function} props.setUserUsername - The setState for the userUsername state
  */
 function Authentication({ setIsLoggedIn, setUserUsername }) {
   const [_switch, setSwitch] = useState(true);

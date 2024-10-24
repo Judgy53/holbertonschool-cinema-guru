@@ -43,6 +43,7 @@ Covered Topics:
 - [3. Initialize the main App component](#3-initialize-the-main-app-component)
 - [4. Authentification - Component behavior](#4-authentification---component-behavior)
 - [5. Authentification - Api integration](#5-authentification---api-integration)
+- [6. Navigation - Adding the header](#6-navigation---adding-the-header)
 
 ## 0. Cloning the Figma project
 Create an account in [Figma](https://www.figma.com/ "Figma") if you don’t have one and open [this project](https://www.figma.com/design/RPc247kHDXz5QeFNUM3Gs6/Holbertonschool---Cinema-Guru?node-id=0-1&node-type=canvas "this project") and “Duplicate to your Drafts” to have access to all design details.
@@ -279,5 +280,55 @@ In this task, will add the necessary logic to finalize the authentication proces
                 - Set the userUsername state to username
                 - Set the isLoggedIn state to true
     - Bind the `handleSubmit` function to the form `onSubmit` event
+
+<sub>[Return to Top](#holbertonschool-cinema-guru)</sub>
+
+## 6. Navigation - Adding the header
+In this task we will start building the Dashboard component.
+
+**dashboard.css**
+
+Create `src/routes/dashboard/dashboard.css`:
+
+This file would host all the css needed for the dashboard components.
+
+**navigation.css**
+
+Create `src/components/navigation/navigation.css`:
+
+This file would host all the css needed for the navigation components.
+
+**Header**
+
+![](readme_assets/6_header.png)
+
+Create `src/components/navigation/Header.js`:
+- The file should import `navigation.css`
+- The file should export a functional component named `Header` as default:
+    - Header must accept these props:
+        - `userUsername`: string – The state for the username
+        - `setIsLoggedIn`: function –The setState for the isLoggedin state
+    - Header must return a html `nav` containing these elements and others:
+        - `img`: `src="https://picsum.photos/100/100"` for random avatars
+        - `p`: Welcoming the user using the `userUsername` state
+        - `span`: with an icon and logout text
+    - Create `logout` function in which:
+        - Remove the `accessToken` item from `localStorage`
+        - Set isLoggedIn state to false
+    - Bind the `logout` function the the logout span’s `onClick` event.
+
+**Dashboard**
+
+![](readme_assets/6_dashboard.png)
+
+Create `src/routes/dashboard/Dashboard.js`:
+- The file should import `dashboard.css`
+- The file should import the Header component
+- The file should export a functional component named `Dashboard` as default:
+    - Dashboard must accept these props:
+        - `userUsername`: string – The state for the username
+        - `setIsLoggedIn`: function –The setState for the isLoggedin state
+    - Dashboard must return a html `div` containing these elements and others:
+        - Add the Header component to Dashboard return value passing to it the `userUsername` and `setIsLoggedIn` as props
 
 <sub>[Return to Top](#holbertonschool-cinema-guru)</sub>
