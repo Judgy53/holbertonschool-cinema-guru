@@ -25,7 +25,7 @@ Covered Topics:
     - `cd` into the repository folder and run the following commands:
         - `docker-compose build --no-cache --force-rm`
         - `docker-compose up`
-        - After running the above command you should get an output similar to this indicating that the backend and db are running. ![](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/medias/2022/4/af62bcfe76602df6a97d54316323e74d7763d666.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG%2F20241022%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20241022T065425Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=f61dbc6bca71ec73f5f57bf245cfebe31c946dfb23fbab0564e94d3cda969c4d)
+        - After running the above command you should get an output similar to this indicating that the backend and db are running. ![](readme_assets/dockerRunning.png)
 
 **Notes**
 
@@ -39,15 +39,18 @@ Covered Topics:
 **Table of Contents**
 - [0. Cloning the Figma project](#0-cloning-the-figma-project)
 - [1. Setting up the workspace](#1-setting-up-the-workspace)
+- [2. Adding the general use components](#2-adding-the-general-use-components)
 
 ## 0. Cloning the Figma project
 Create an account in [Figma](https://www.figma.com/ "Figma") if you don’t have one and open [this project](https://www.figma.com/design/RPc247kHDXz5QeFNUM3Gs6/Holbertonschool---Cinema-Guru?node-id=0-1&node-type=canvas "this project") and “Duplicate to your Drafts” to have access to all design details.
 
-If you can’t access it, please find here the [Figma file](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/misc/2022/4/935f3c7ad00396b900ddffbea78c6fab61f1d7a8.fig?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG%2F20241022%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20241022T075315Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=d987c351ec7be601fd39676ec5236babd38675a9f31c5b06e19e8c3a75e3bf15 "Figma file").
+If you can’t access it, please find here the [Figma file](readme_assets/cinemaGuru.fig "Figma file").
 
-![](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/medias/2022/4/58de24af3384ecb909b6df472d9f284fa781963d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG%2F20241022%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20241022T065425Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=6c89cbb5e76700d21765e19c55258f29f81204f6396807e06268166ecaf47f84)
+![](readme_assets/0_figma.png)
 
 **_All the components designs that we will be working on could be found in the Figma file._**
+
+<sub>[Return to Top](#holbertonschool-cinema-guru)</sub>
 
 ## 1. Setting up the workspace
 In this project, we will use the `yarn` package manager instead of npm.
@@ -80,3 +83,86 @@ This will be the general folder structuring.
 
 **Repo:**
 - File: `README.md, package.json, public/, src/assets/, src/components, src/routes, src/App.js`
+
+<sub>[Return to Top](#holbertonschool-cinema-guru)</sub>
+
+## 2. Adding the general use components
+In this task we will add various general components that we will be using almost in every major component.
+
+**Input**
+
+![](readme_assets/2_textInput.gif)
+
+![](readme_assets/2_dateInput.gif)
+
+Create `src/components/general/Input.js`:
+
+- The file should import `general.css`
+- The file should export a functional component named `Input` as default:
+    - Input must accept these props:
+        - `label`: String – The input label
+        - `type`: String – Input type
+        - `className`: String – Input custom classes
+        - `value`: Any – The controlled state
+        - `setValue`: Function – The setState function of the above state.
+        - `icon`(optional): FontAwesomeIcon – An icon to decorate the input with.
+        - `inputAttributes`(optional): Object – Other input attributes
+- Input’s return value must contain a html input with the appropriate attributes from the props.
+- Create `handleInput` function that takes the `onChange` event as parameter and sets the value to the event target value using the `setValue` prop and pass it to the input `onChange` event.
+
+**SelectInput**
+
+![](readme_assets/2_selectInput.gif)
+
+Create `src/components/general/SelectInput.js`:
+
+- The file should import `general.css`
+- The file should export a functional component named `SelectInput` as default:
+    - SelectInput must accept these props:
+        - `label`: String – The input label
+        - `options`: Array – Array of select options
+        - `className`: String – SelectInput custom classes
+        - `value`: Any – The controlled state
+        - `setValue`: Function – The setState function of the above state.
+- SelectInput’s return value must contain a html select tag with the appropriate attributes from the props.
+    - Inside the select tag, map each option from the options prop to return an option tag with the appropriate attributes and text inside.
+- Create `handleSelect` function that takes the `onChange` event as parameter and sets the value to the event target value using the `setValue` prop and pass it to the select `onChange` event.
+
+**Button**
+
+![](readme_assets/2_button.gif)
+
+Create `src/components/general/Button.js`:
+
+- The file should import `general.css`
+- The file should export a functional component named `Button` as default:
+    - Button must accept these props:
+        - `label`: String – The button label
+        - `className`: String – Button custom classes
+        - `onClick`: Function – The onClick handler for the button.
+        - `icon`(optional): FontAwesomeIcon – An icon to decorate the button with.
+- Button’s return value must contain a html button tag with the appropriate attributes from the props.
+    - Inside the button tag, there should be a FontAwesomeIcon if provided and the button text.
+- Bind the button `onClick` event with the `onClick` function passed from the props.
+
+**SearchBar**
+
+![](readme_assets/2_search.gif)
+
+Create `src/components/general/SearchBar.js`:
+
+- The file should import `general.css`
+- The file should export a functional component named `SearchBar` as default:
+    - Button must accept these props:
+        - `title`: String – The controlled state
+        - `setTitle`: String – The setState function of the above state.
+- SearchBar’s return value must contain a html input with the appropriate attributes from the props.
+- Create `handleInput` function that takes the `onChange` event as parameter and sets the value to the event target value using the `setTitle` prop and pass it to the input `onChange` event.
+
+**general.css**
+
+Create `src/components/general/general.css`:
+
+- Add the necessary css rules to assure the components design provided in Figma.
+
+<sub>[Return to Top](#holbertonschool-cinema-guru)</sub>

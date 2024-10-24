@@ -1,0 +1,87 @@
+:root {
+  --general-clr-red: #bb000e;
+  --general-clr-red-light: #e31c25;
+  --general-clr-input-bg-dark: #2c2c2c;
+}
+
+.Input,
+.SelectInput {
+  svg {
+    padding-right: 5px;
+    opacity: 0.4;
+  }
+
+  input,
+  select {
+    display: block;
+    border: none;
+    border-bottom: 1px solid var(--general-clr-red);
+    background: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.SelectInput select {
+  &,
+  option {
+    text-transform: capitalize;
+  }
+}
+
+.Button {
+  color: white;
+  background-color: var(--general-clr-red);
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 0.25s linear;
+  padding: 0.25rem 0.5rem;
+
+  svg {
+    padding-right: 5px;
+  }
+
+  &:hover {
+    background-color: var(--general-clr-red-light);
+  }
+}
+
+.SearchBar {
+  background-color: var(--general-clr-input-bg-dark);
+  border-radius: 15px;
+  padding: .2rem .5rem;
+  width: fit-content;
+  cursor: pointer;
+  color: white;
+
+  & > * {
+    opacity: 0.4;
+    transition: opacity .25s linear;
+  }
+
+  &:hover > *, &:focus-within > * {
+    opacity: 1;
+  }
+
+  input {
+    padding-left: 10px;
+    background: none;
+    border: none;
+    outline: none;
+    color: inherit;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:not(:placeholder-shown) {
+      opacity: 1;
+    }
+
+    &::placeholder {
+      opacity: 1;
+    }
+  }
+}
+
