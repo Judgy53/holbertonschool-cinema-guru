@@ -44,6 +44,8 @@ Covered Topics:
 - [4. Authentification - Component behavior](#4-authentification---component-behavior)
 - [5. Authentification - Api integration](#5-authentification---api-integration)
 - [6. Navigation - Adding the header](#6-navigation---adding-the-header)
+- [7. Navigation - Sidebar](#7-navigation---sidebar)
+- [8. Dashboard routing](#8-dashboard-routing)
 
 ## 0. Cloning the Figma project
 Create an account in [Figma](https://www.figma.com/ "Figma") if you don’t have one and open [this project](https://www.figma.com/design/RPc247kHDXz5QeFNUM3Gs6/Holbertonschool---Cinema-Guru?node-id=0-1&node-type=canvas "this project") and “Duplicate to your Drafts” to have access to all design details.
@@ -330,5 +332,80 @@ Create `src/routes/dashboard/Dashboard.js`:
         - `setIsLoggedIn`: function –The setState for the isLoggedin state
     - Dashboard must return a html `div` containing these elements and others:
         - Add the Header component to Dashboard return value passing to it the `userUsername` and `setIsLoggedIn` as props
+
+<sub>[Return to Top](#holbertonschool-cinema-guru)</sub>
+
+## 7. Navigation - Sidebar
+In this task we will add another component to facilitate navigating through the app even more
+
+**auth.css**
+
+Create `src/components/components.css`:
+
+This file would host all the css needed for miscellaneous components.
+
+**Activity**
+
+![](readme_assets/7_activity.png)
+
+The `Activity` component will help us show the recent activities.
+
+Create `src/components/Activity.js`:
+- The file should import `components.css`
+- The file should export a functional component named `Activity` as default:
+    - Activity must return a html `li` containing these elements and others:
+        - `p`: Formatted sentence according to the activity (see design)
+
+**SideBar**
+
+![](readme_assets/7_sidebar.gif)
+
+The `SideBar` component will be a key component for better navigation.
+
+Create `src/components/navigation/SideBar.js`:
+
+- The file should import `navigation.css`
+- The file should export a functional component named `SideBar` as default:
+    - Add the following state to the component using the `useState` hook:
+        - `selected`string default: `"home"`
+        - `small`boolean default: `true`
+        - `activities`array default: `[]`
+        - `showActivities`boolean default: `false`
+    - Create `setPage` function:
+        - `setPage` takes one parameter `pageName`
+        - `setPage` sets the `selected` state to `pageName`
+        - using the `useNavigate` hook, redirect the user to the desired page
+            - “Home” =&gt; `/home`
+            - “Favorites” =&gt; `/favorites`
+            - “Watch Later” =&gt; `/watchlater`
+    - Using the `useEffect` hook:
+        - Send a get request using axios to `/api/activity`. on Success set the activities state to the response data.
+    - Authentication must return a html `nav` containing these elements and others:
+        - Navigation `ul`:
+            - Contains three `li` with an icon corresponding to the design and the following text `"Home"` `"Favorites"` `"Watch Later"`, then bind the li’s onClick event to `setPage` function passing the corresponding `pageName`
+        - Activity `ul`:
+            - Map the first 10 values from the activities state to the Activity component.
+
+In `src/routes/dashboard/Dashboard.js`:
+
+- Import the SideBar component and style it according to the design
+
+![](readme_assets/7_dashboard.gif)
+
+<sub>[Return to Top](#holbertonschool-cinema-guru)</sub>
+
+## 8. Dashboard routing
+Now we’ll add the routing.
+
+**Dashboard**
+
+Edit `src/routes/dashboard/Dashboard.js`:
+- Import `BrowserRouter`, `Routes`, `Route`, `Navigate` from `react-router-dom`
+- Wrap the return value of the Dashboard component in a `BrowserRouter`
+- Add a Routes component. Inside it add:
+    - `Route` to path `/home` that should render the `HomePage` component (Will be created in a later task)
+    - `Route` to path `/favorites` that should render the `Favorites` component (Will be created in a later task)
+    - `Route` to path `/watchlater` that should render the `WhatchLater` component (Will be created in a later task)
+    - `Route` for all other paths that redirects the user to `/home` using the `Navigate` component
 
 <sub>[Return to Top](#holbertonschool-cinema-guru)</sub>

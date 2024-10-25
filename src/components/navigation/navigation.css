@@ -28,3 +28,43 @@
     }
   }
 }
+
+.SideBar {
+  background-color: #BB000E;
+
+  .Navigation {
+    list-style: none;
+    padding-left: 0;
+    color: white;
+  }
+
+  .Navigation-link {
+    padding-block: .5rem;
+    padding-inline: 1rem;
+    cursor: pointer;
+
+    &.selected, &:hover {
+      background-color: #E31C25;
+    }
+  }
+
+  .link-name {
+    display: none;
+    padding-left: .5rem;
+  }
+
+  .arrow {
+    float:right;
+    display: none;
+  }
+
+  &.open {
+    .link-name {
+      display: inline;
+    }
+
+    .arrow {
+      display: block;
+    }
+  }
+}

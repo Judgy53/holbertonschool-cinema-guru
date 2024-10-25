@@ -1,0 +1,17 @@
+.Activities {
+  min-width: 200px;
+  margin-inline: .25rem;
+  background-color: #2C2C2C;
+  color: white;
+
+  h3 {
+    text-align: center;
+    margin-inline: .5rem;
+    padding-bottom: .25rem;
+    border-bottom: 2px solid white;
+  }
+}
+
+.activity-list {
+  list-style: none;
+}

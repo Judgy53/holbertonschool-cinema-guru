@@ -1,3 +1,10 @@
 .Dashboard {
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.Main {
+  flex-grow: 1;
+  display: flex;
 }
